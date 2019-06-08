@@ -103,9 +103,14 @@ JFileChooser seleccionar = new JFileChooser();
 
         jMenuBar2.add(jMenu4);
 
-        jMenu5.setText("Acerca de");
+        jMenu5.setText("Ayuda");
 
-        jMenuItem5.setText("Información");
+        jMenuItem5.setText("Acerca de..");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem5);
 
         jMenuItem6.setText("Manual Usuario");
@@ -223,6 +228,11 @@ JFileChooser seleccionar = new JFileChooser();
           
         }        
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,"LFP PRACTICA\n Uzzi Libni Aarón Pineda Solórzano \n carné: 201403541");        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     public String Abrir(File archivo)
     {
