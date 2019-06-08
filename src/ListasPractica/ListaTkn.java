@@ -20,30 +20,6 @@ public class ListaTkn {
         public String idtkn = "";
         public String tkn = "";
 
-        public void setNumero(String numero) {
-            this.numero = numero;
-        }
-
-        public void setLexema(String lexema) {
-            this.lexema = lexema;
-        }
-
-        public void setFila(String fila) {
-            this.fila = fila;
-        }
-
-        public void setColumna(String columna) {
-            this.columna = columna;
-        }
-
-        public void setIdtkn(String idtkn) {
-            this.idtkn = idtkn;
-        }
-
-        public void setTkn(String tkn) {
-            this.tkn = tkn;
-        }
-
         public String getNumero() {
             return numero;
         }
