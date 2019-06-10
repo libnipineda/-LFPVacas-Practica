@@ -7,6 +7,9 @@ package Reporte;
 
 import ListasPractica.ListaTkn;
 import ListasPractica.ListaError;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author libni
@@ -56,20 +60,79 @@ public class HTML {
                 ,"</table>"
                 ,"</body>"
                 ,"</html> "
-                };            
-//            Path wiki = Paths.get("C:/Users/libni/Desktop/ReporteToken.html",texto);
-//            Charset cs = Charset.forName(listaA);
-            System.out.println(texto);
-//        try {
-//            Files.readAllLines(wiki);
-//        } catch (IOException ex) {
-//            Logger.getLogger(HTML.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-           //Files.write("C:/Users/libni/Desktop/ReporteToken.html", texto);           
+                };                          
+           try
+           {
+               File archivo = new File("C:/Users/libni/Desktop/ReporteToken.html");
+               if(!archivo.exists())
+               {
+                   archivo.createNewFile();
+               }
+               FileWriter fw = new FileWriter(archivo);
+               BufferedWriter bw = new BufferedWriter(fw);
+               for(String item : texto)
+               {
+                bw.write(item);
+               }               
+               bw.close();
+           }catch(Exception e)
+           {               
+               e.printStackTrace();
+               JOptionPane.showMessageDialog(null,"No se pudo crear el archivo");
+           }                 
     }
     
     public void ReporteError(List<ListaError> datos)
     {
-        
+        if(datos.size() != 0)
+        {
+            for(int i=0; i < datos.size(); i++)
+            {
+                ListaB = ListaB +"<tr>"
+                    + "<td><strong>" + datos.get(i).Enumero + "</strong></td>"
+                    + "<td><strong>" + datos.get(i).Elexema + "</strong></td>"
+                    + "<td><strong>" + datos.get(i).Efila + "</strong></td>"
+                    + "<td><strong>" + datos.get(i).Ecolumna + "</strong></td>"
+                    + "<td><strong>" + datos.get(i).Etkn + "</strong></td>"
+                    +"</tr>";
+            }
+        }
+        String[] text = { "<html>"
+                        ,"<head>"
+                        ,"<title> LFP PRACTICA NO. 1  TABLA DE ERRORES</title>"
+                        ,"</head>"
+                        ,"<body>"
+                        ,"<h1> Listado de Errores</h1>"
+                        ,"<table border>"
+                        ,"<tr>"
+                        ,"<td><strong>No</strong></td>"
+                        ,"<td><strong>Caracter</strong></td>"
+                        ,"<td><strong>Fila</strong></td>"
+                        ,"<td><strong>Columna</strong></td>"
+                        ,"<td><strong>Descripcion</strong></td>"
+                        ,"</tr>"
+                        ,ListaB
+                        ,"</table>"
+                        ,"</body>"
+                        ,"</html>"};        
+        try
+           {
+               File archivo = new File("C:/Users/libni/Desktop/ReporteError.html");
+               if(!archivo.exists())
+               {
+                   archivo.createNewFile();
+               }
+               FileWriter fw = new FileWriter(archivo);
+               BufferedWriter bw = new BufferedWriter(fw);
+               for(String item : text)
+               {
+                bw.write(item);
+               }               
+               bw.close();
+           }catch(Exception e)
+           {               
+               e.printStackTrace();
+               JOptionPane.showMessageDialog(null,"No se pudo crear el archivo");
+           }      
     }
 }

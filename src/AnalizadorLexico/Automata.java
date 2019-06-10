@@ -11,6 +11,7 @@ import ListasPractica.ListaTkn;
 import ListasPractica.ListaError;
 import java.util.ArrayList;
 import Reporte.HTML; 
+import java.util.Iterator;
 /**
  *
  * @author libni
@@ -67,7 +68,7 @@ public class Automata {
                      estado = 4;
                  }
                  else
-                 {  
+                 {                       
                      tokenerror += cadena.charAt(i);                     
                      String errornum,errorlex,errorcol,errortkn,numidtkn;
                      errornum = ""+nutknen;
@@ -76,7 +77,7 @@ public class Automata {
                      errortkn = "Valor desconocido.";
                      numidtkn = "" + idtkn;
                     addEToken(errornum,errorlex,errorcol,errortkn,numidtkn);
-                    nutknen++; concatenar=""; tokenerror="";
+                    nutknen++; concatenar=""; tokenerror="";                     
                  }
                  break;
                  
@@ -88,7 +89,7 @@ public class Automata {
                   }
                   else
                   {
-                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;
+                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                      
                       String num,lex,f,col,numtkn,tkn;
                       num = "" +nutknen;
                       lex = "" +concatenar;
@@ -109,7 +110,7 @@ public class Automata {
                  }
                  else
                  {
-                     AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;
+                     AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                     
                       String num,lex,f,col,numtkn,tkn;
                       num = "" +nutknen;
                       lex = "" +concatenar;
@@ -123,7 +124,7 @@ public class Automata {
                  break;
                  
              case 3:
-                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;
+                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                      
                       String num,lex,f,col,numtkn,tkn;
                       num = "" +nutknen;
                       lex = "" +concatenar;
@@ -153,7 +154,7 @@ public class Automata {
                  break;
                  
              case 6:
-                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;
+                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                      
                       String num1,lex1,f1,col1,numtkn1,tkn1;
                       num1 = "" +nutknen;
                       lex1 = "" +concatenar;
@@ -166,8 +167,7 @@ public class Automata {
                  break;
          }
      }
-     JOptionPane.showMessageDialog(null,"Su analisis se a hecho con exito.");        
-     Imprimir();
+     JOptionPane.showMessageDialog(null,"Su analisis se a hecho con exito.");     
  }
  
  public void AnalizarTkn(String tkn)
@@ -229,8 +229,12 @@ public class Automata {
  public void Imprimir()
  {
      HTML reporte = new HTML();
-     reporte.ReporteToken(tabla);
-     reporte.ReporteError(Etabla);
+     reporte.ReporteToken(tabla);     
  }
  
+ public void Imprimir1()
+ {
+     HTML reporte = new HTML();
+     reporte.ReporteError(Etabla);
+ }
 }

@@ -270,7 +270,7 @@ JFileChooser seleccionar = new JFileChooser();
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
         Automata reporte = new Automata();
-        reporte.Imprimir();
+        reporte.Imprimir1();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     public String Abrir(File archivo)
