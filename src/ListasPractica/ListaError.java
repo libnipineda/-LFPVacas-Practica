@@ -18,6 +18,15 @@ public class ListaError {
         public String Ecolumna = "";
         public String Etkn = "";
         public String Eidtkn = "";
+
+        public ListaE(String Enumero, String Elexema, String Ecolumna, String Etkn, String Eidtkn) {
+            this.Enumero = Enumero;
+            this.Elexema = Elexema;
+            this.Ecolumna = Ecolumna;
+            this.Efila = Efila;
+            this.Etkn = Etkn;
+            this.Eidtkn = Eidtkn;
+        }
        
         public String getEnumero() {
             return Enumero;

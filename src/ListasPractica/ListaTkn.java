@@ -13,12 +13,15 @@ public class ListaTkn {
  
     class Lista
     {
-        public String numero = "";
-        public String lexema = "";
-        public String fila = "";
-        public String columna = "";
-        public String idtkn = "";
-        public String tkn = "";
+
+        public Lista(String num, String lexema, String fila, String columna, String idtkn, String tkn) {
+            this.numero = num;
+            this.lexema = lexema;
+            this.fila = fila;
+            this.columna = columna;
+            this.idtkn = idtkn;
+            this.tkn = tkn;
+        }
 
         public String getNumero() {
             return numero;
@@ -43,5 +46,11 @@ public class ListaTkn {
         public String getTkn() {
             return tkn;
         }
+        public String numero = "";
+        public String lexema = "";
+        public String fila = "";
+        public String columna = "";
+        public String idtkn = "";
+        public String tkn = "";
     }
 }
