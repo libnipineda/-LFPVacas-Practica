@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import ListasPractica.ListaTkn;
 import ListasPractica.ListaError;
 import java.util.ArrayList;
+import Reporte.HTML; 
 /**
  *
  * @author libni
@@ -166,6 +167,7 @@ public class Automata {
          }
      }
      JOptionPane.showMessageDialog(null,"Su analisis se a hecho con exito.");        
+     Imprimir();
  }
  
  public void AnalizarTkn(String tkn)
@@ -214,7 +216,7 @@ public class Automata {
  
  public void addToken(String numero, String lexema, String fila, String columna, String idtkn, String tkn)
  {
-    ListaTkn aux = new ListaTkn(numero,lexema,fila,columna,idtkn,tkn);
+    ListaTkn aux = new ListaTkn(numero,lexema,fila,columna,idtkn,tkn);     
     tabla.add(aux);
  }
 
@@ -222,6 +224,13 @@ public class Automata {
  {
      ListaError aux = new ListaError(enumero,elexema,ecolumna,etkn,eidtkn);
      Etabla.add(aux);
+ }
+ 
+ public void Imprimir()
+ {
+     HTML reporte = new HTML();
+     reporte.ReporteToken(tabla);
+     reporte.ReporteError(Etabla);
  }
  
 }

@@ -20,24 +20,23 @@ import java.util.logging.Logger;
  *
  * @author libni
  */
-public class HTML {
-    ListaTkn valor = new ListaTkn();
+public class HTML {    
     String listaA = "";
     String ListaB = "";
     
     
-    public void ReporteToken(ArrayList<ListaTkn> arreglo)
+    public void ReporteToken(List<ListaTkn> arreglo)
     {
         if(arreglo.size() !=0)
         {
             for(int i=0; i < arreglo.size(); i++)
-            {
-//                listaA = listaA + "<tr>"
-//                    + "<td><strong>" + arreglo[i].numero + "</strong></td>"                    
-//                    + "<td><strong>" + arreglo[i].lexema + "</strong></td>"
-//                    + "<td><strong>" + arreglo[i].idtkn + "</strong></td>"
-//                    + "<td><strong>" + arreglo[i].tkn + "</strong></td>"
-//                    + "</tr>";                
+            {                                
+                listaA = listaA + "<tr>"
+                    + "<td><strong>" + arreglo.get(i).numero  + "</strong></td>"                    
+                    + "<td><strong>" + arreglo.get(i).lexema + "</strong></td>"
+                    + "<td><strong>" + arreglo.get(i).idtkn + "</strong></td>"
+                    + "<td><strong>" + arreglo.get(i).tkn + "</strong></td>"
+                    + "</tr>";                
             }            
         }
         String[] texto = { "<html>"
@@ -58,13 +57,15 @@ public class HTML {
                 ,"</body>"
                 ,"</html> "
                 };            
-            Path wiki = Paths.get("C:/Users/libni/Desktop/ReporteToken.html",texto);
-            Charset cs = Charset.forName(listaA);
-        try {
-            Files.readAllLines(wiki);
-        } catch (IOException ex) {
-            Logger.getLogger(HTML.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//            Path wiki = Paths.get("C:/Users/libni/Desktop/ReporteToken.html",texto);
+//            Charset cs = Charset.forName(listaA);
+            System.out.println(texto);
+//        try {
+//            Files.readAllLines(wiki);
+//        } catch (IOException ex) {
+//            Logger.getLogger(HTML.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+           //Files.write("C:/Users/libni/Desktop/ReporteToken.html", texto);           
     }
     
     public void ReporteError(List<ListaError> datos)

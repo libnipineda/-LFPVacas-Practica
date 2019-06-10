@@ -10,16 +10,7 @@ package ListasPractica;
  * @author libni
  */
 public class ListaError {
-
-    public ListaError(String enumero, String elexema, String ecolumna, String etkn, String eidtkn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public ListaError() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    class ListaE
-    {
+    
         public String Enumero = "";
         public String Elexema = "";
         public String Efila = "";
@@ -27,7 +18,7 @@ public class ListaError {
         public String Etkn = "";
         public String Eidtkn = "";
 
-        public ListaE(String Enumero, String Elexema, String Ecolumna, String Etkn, String Eidtkn) {
+        public ListaError(String Enumero, String Elexema, String Ecolumna, String Etkn, String Eidtkn) {
             this.Enumero = Enumero;
             this.Elexema = Elexema;
             this.Ecolumna = Ecolumna;
@@ -58,6 +49,5 @@ public class ListaError {
 
         public String getEidtkn() {
             return Eidtkn;
-        }
-    }
+        }    
 }
