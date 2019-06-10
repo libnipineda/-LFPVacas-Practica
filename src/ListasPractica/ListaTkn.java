@@ -10,6 +10,14 @@ package ListasPractica;
  * @author libni
  */
 public class ListaTkn {
+
+    public ListaTkn(String numero, String lexema, String fila, String columna, String idtkn, String tkn) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ListaTkn() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  
     class Lista
     {

@@ -10,6 +10,14 @@ package ListasPractica;
  * @author libni
  */
 public class ListaError {
+
+    public ListaError(String enumero, String elexema, String ecolumna, String etkn, String eidtkn) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ListaError() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     class ListaE
     {
         public String Enumero = "";

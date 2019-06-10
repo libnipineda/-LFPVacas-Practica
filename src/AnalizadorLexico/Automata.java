@@ -16,11 +16,16 @@ import java.util.ArrayList;
  */
 public class Automata {
  List<ListaTkn> tabla;
- int idtkn, nutknen = 0, idtkns=11, fila =0, columna=0;
+ List<ListaError> Etabla;
+ int idtkn, nutknen = 0, idtkns=12, fila =0, columna=0;
  String token;
+ String tokenerror =""; 
+ 
+ 
  public Automata()
  {
      this.tabla = new ArrayList<ListaTkn>();
+     this.Etabla = new ArrayList<ListaError>();
  }
  
  public void Lexico(String cadena)
@@ -61,8 +66,16 @@ public class Automata {
                      estado = 4;
                  }
                  else
-                 {
-                     
+                 {  
+                     tokenerror += cadena.charAt(i);                     
+                     String errornum,errorlex,errorcol,errortkn,numidtkn;
+                     errornum = ""+nutknen;
+                     errorlex = tokenerror;
+                     errorcol = "" + columna;
+                     errortkn = "Valor desconocido.";
+                     numidtkn = "" + idtkn;
+                    addEToken(errornum,errorlex,errorcol,errortkn,numidtkn);
+                    nutknen++; concatenar=""; tokenerror="";
                  }
                  break;
                  
@@ -74,7 +87,16 @@ public class Automata {
                   }
                   else
                   {
-                      
+                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;
+                      String num,lex,f,col,numtkn,tkn;
+                      num = "" +nutknen;
+                      lex = "" +concatenar;
+                      f = ""+fila;
+                      col = ""+columna;
+                      numtkn = ""+idtkn;
+                      tkn = ""+token;
+                      addToken(num,lex,f,col,numtkn,tkn);
+                      nutknen++; concatenar = "";
                   }
                  break;
                  
@@ -86,20 +108,60 @@ public class Automata {
                  }
                  else
                  {
-                     
+                     AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;
+                      String num,lex,f,col,numtkn,tkn;
+                      num = "" +nutknen;
+                      lex = "" +concatenar;
+                      f = ""+fila;
+                      col = ""+columna;
+                      numtkn = "12";
+                      tkn = "Numero";
+                      addToken(num,lex,f,col,numtkn,tkn);
+                      nutknen++; concatenar = "";
                  }
                  break;
                  
              case 3:
+                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;
+                      String num,lex,f,col,numtkn,tkn;
+                      num = "" +nutknen;
+                      lex = "" +concatenar;
+                      f = ""+fila;
+                      col = ""+columna;
+                      numtkn = ""+idtkn;
+                      tkn = ""+token;
+                      addToken(num,lex,f,col,numtkn,tkn);
+                      nutknen++; concatenar = "";
                  break;
                  
              case 4:
-                 break;
-                 
+                 concatenar += cadena;
+                 estado = 5;
+                 break;                 
              case 5:
+                 if(cadena.equals(comillas))
+                 {
+                  concatenar += cadena;
+                  estado = 6;   
+                 }
+                 else                     
+                 {
+                  concatenar += cadena;
+                  estado = 5;    
+                 }
                  break;
                  
              case 6:
+                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;
+                      String num1,lex1,f1,col1,numtkn1,tkn1;
+                      num1 = "" +nutknen;
+                      lex1 = "" +concatenar;
+                      f1 = ""+fila;
+                      col1 = ""+columna;
+                      numtkn1 = ""+idtkn;
+                      tkn1 = ""+token;
+                      addToken(num1,lex1,f1,col1,numtkn1,tkn1);
+                      nutknen++; concatenar = "";
                  break;
          }
      }
@@ -148,6 +210,18 @@ public class Automata {
              token = "cadena"; idtkns++; idtkn = idtkns;
              break;
      }
+ }
+ 
+ public void addToken(String numero, String lexema, String fila, String columna, String idtkn, String tkn)
+ {
+    ListaTkn aux = new ListaTkn(numero,lexema,fila,columna,idtkn,tkn);
+    tabla.add(aux);
+ }
+
+ public void addEToken(String enumero, String elexema, String ecolumna, String etkn, String eidtkn)
+ {
+     ListaError aux = new ListaError(enumero,elexema,ecolumna,etkn,eidtkn);
+     Etabla.add(aux);
  }
  
 }
