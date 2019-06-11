@@ -90,8 +90,7 @@ public class HTML {
             {
                 ListaB = ListaB +"<tr>"
                     + "<td><strong>" + datos.get(i).Enumero + "</strong></td>"
-                    + "<td><strong>" + datos.get(i).Elexema + "</strong></td>"
-                    + "<td><strong>" + datos.get(i).Efila + "</strong></td>"
+                    + "<td><strong>" + datos.get(i).Elexema + "</strong></td>"                    
                     + "<td><strong>" + datos.get(i).Ecolumna + "</strong></td>"
                     + "<td><strong>" + datos.get(i).Etkn + "</strong></td>"
                     +"</tr>";

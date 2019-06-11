@@ -12,8 +12,7 @@ package ListasPractica;
 public class ListaError {
     
         public String Enumero = "";
-        public String Elexema = "";
-        public String Efila = "";
+        public String Elexema = "";        
         public String Ecolumna = "";
         public String Etkn = "";
         public String Eidtkn = "";
@@ -21,8 +20,7 @@ public class ListaError {
         public ListaError(String Enumero, String Elexema, String Ecolumna, String Etkn, String Eidtkn) {
             this.Enumero = Enumero;
             this.Elexema = Elexema;
-            this.Ecolumna = Ecolumna;
-            this.Efila = Efila;
+            this.Ecolumna = Ecolumna;            
             this.Etkn = Etkn;
             this.Eidtkn = Eidtkn;
         }
@@ -33,11 +31,7 @@ public class ListaError {
 
         public String getElexema() {
             return Elexema;
-        }
-
-        public String getEfila() {
-            return Efila;
-        }
+        }        
 
         public String getEcolumna() {
             return Ecolumna;

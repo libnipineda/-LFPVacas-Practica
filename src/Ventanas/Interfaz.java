@@ -43,19 +43,19 @@ JFileChooser seleccionar = new JFileChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        ARCHIVO = new javax.swing.JMenu();
+        ABRIR = new javax.swing.JMenuItem();
+        GUARDAR = new javax.swing.JMenuItem();
+        GUARDARC = new javax.swing.JMenuItem();
+        SCANNER = new javax.swing.JMenuItem();
+        SALIR = new javax.swing.JMenuItem();
+        REPORTE = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        HELP = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("[LFP]Practica1");
@@ -64,69 +64,51 @@ JFileChooser seleccionar = new JFileChooser();
         txtArea.setRows(5);
         jScrollPane1.setViewportView(txtArea);
 
-        jMenu4.setText("Archivo");
+        ARCHIVO.setText("Archivo");
 
-        jMenuItem1.setText("Abrir");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        ABRIR.setText("Abrir");
+        ABRIR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                ABRIRActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        ARCHIVO.add(ABRIR);
 
-        jMenuItem2.setText("Guardar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        GUARDAR.setText("Guardar");
+        GUARDAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                GUARDARActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem2);
+        ARCHIVO.add(GUARDAR);
 
-        jMenuItem3.setText("Guardar como..");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        GUARDARC.setText("Guardar como..");
+        GUARDARC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                GUARDARCActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem3);
+        ARCHIVO.add(GUARDARC);
 
-        jMenuItem4.setText("Analizar");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        SCANNER.setText("Analizar");
+        SCANNER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                SCANNERActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        ARCHIVO.add(SCANNER);
 
-        jMenuItem8.setText("Salir");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        SALIR.setText("Salir");
+        SALIR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                SALIRActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem8);
+        ARCHIVO.add(SALIR);
 
-        jMenuBar2.add(jMenu4);
+        jMenuBar2.add(ARCHIVO);
 
-        jMenu5.setText("Ayuda");
-
-        jMenuItem5.setText("Acerca de..");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem5);
-
-        jMenuItem6.setText("Manual Usuario");
-        jMenu5.add(jMenuItem6);
-
-        jMenuItem7.setText("Manual Tecnico");
-        jMenu5.add(jMenuItem7);
-
-        jMenuBar2.add(jMenu5);
-
-        jMenu1.setText("Reportes");
+        REPORTE.setText("Reportes");
 
         jMenuItem9.setText("Reporte Tokens");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +116,7 @@ JFileChooser seleccionar = new JFileChooser();
                 jMenuItem9ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem9);
+        REPORTE.add(jMenuItem9);
 
         jMenuItem10.setText("Reporte Errores");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -142,9 +124,27 @@ JFileChooser seleccionar = new JFileChooser();
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem10);
+        REPORTE.add(jMenuItem10);
 
-        jMenuBar2.add(jMenu1);
+        jMenuBar2.add(REPORTE);
+
+        HELP.setText("Ayuda");
+
+        jMenuItem5.setText("Acerca de..");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        HELP.add(jMenuItem5);
+
+        jMenuItem6.setText("Manual Usuario");
+        HELP.add(jMenuItem6);
+
+        jMenuItem7.setText("Manual Tecnico");
+        HELP.add(jMenuItem7);
+
+        jMenuBar2.add(HELP);
 
         setJMenuBar(jMenuBar2);
 
@@ -168,7 +168,7 @@ JFileChooser seleccionar = new JFileChooser();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void ABRIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ABRIRActionPerformed
         // TODO add your handling code here:                
         if(seleccionar.showDialog(null,"Abrir") == JFileChooser.APPROVE_OPTION)
         {
@@ -186,9 +186,9 @@ JFileChooser seleccionar = new JFileChooser();
                 }
             }
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_ABRIRActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void GUARDARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GUARDARActionPerformed
         // TODO add your handling code here:
         if(seleccionar.showDialog(null,"Guardar")== JFileChooser.APPROVE_OPTION)
         {
@@ -211,9 +211,9 @@ JFileChooser seleccionar = new JFileChooser();
                 JOptionPane.showMessageDialog(null,"Guardar Documento de Texto");
             }
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_GUARDARActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void GUARDARCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GUARDARCActionPerformed
         // TODO add your handling code here:
         if(seleccionar.showDialog(null,"Guardar Como")== JFileChooser.APPROVE_OPTION)
         {
@@ -236,15 +236,15 @@ JFileChooser seleccionar = new JFileChooser();
                 JOptionPane.showMessageDialog(null,"Guardar Documento de Texto");
             }
         }        
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_GUARDARCActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void SCANNERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCANNERActionPerformed
         // TODO add your handling code here:
         Automata datos = new Automata();       
         datos.Lexico(txtArea.getText());
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_SCANNERActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void SALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SALIRActionPerformed
         // TODO add your handling code here:
         if(JOptionPane.showConfirmDialog(null,"¿Desea salir de la aplicación?") == JOptionPane.OK_OPTION)
         {
@@ -254,7 +254,7 @@ JFileChooser seleccionar = new JFileChooser();
         {
           
         }        
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_SALIRActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
@@ -360,19 +360,19 @@ JFileChooser seleccionar = new JFileChooser();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuItem ABRIR;
+    private javax.swing.JMenu ARCHIVO;
+    private javax.swing.JMenuItem GUARDAR;
+    private javax.swing.JMenuItem GUARDARC;
+    private javax.swing.JMenu HELP;
+    private javax.swing.JMenu REPORTE;
+    private javax.swing.JMenuItem SALIR;
+    private javax.swing.JMenuItem SCANNER;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtArea;
