@@ -11,6 +11,7 @@ import ListasPractica.ListaTkn;
 import ListasPractica.ListaError;
 import java.util.ArrayList;
 import Reporte.HTML; 
+import java.io.*;
 import java.util.Iterator;
 /**
  *
@@ -22,6 +23,7 @@ public class Automata {
  int idtkn, nutknen = 0, idtkns=12, fila =0, columna=0;
  String token,num,lex,f,col,numtkn,tkn;
  String tokene =""; 
+ int numnodo=0;
  
  public Automata()
  {
@@ -30,8 +32,7 @@ public class Automata {
  }
  
  public void Lexico(String cadena)
- {   
-     int size = cadena.length();
+ {        
      String concatenar="";
      int estado = 0;           
      
@@ -40,16 +41,19 @@ public class Automata {
      tab= (char)9; salto =(char)10; espacio=(char)32;
      dosp = (char)58; ptocoma =(char)59; coma =(char)44; llaveA = (char)123; llaveC = (char)125; comillas = (char)34;
      
-     for(int i=0; i < size; i++)
+     for(int i=0; i < cadena.length(); i++)
      {
+        //JOptionPane.showMessageDialog(null,cadena.charAt(i));
          switch(estado)
         {
            case 0:
+
+               //tab salto espacio
                 if(cadena.charAt(i)==(tab) || cadena.charAt(i)==(salto) || cadena.charAt(i)==(espacio))
                 {
-                   estado = 0; concatenar += cadena.charAt(i); fila++; columna++;
+                  estado = 0; concatenar += cadena.charAt(i); fila++; columna++;
                 }
-                else if(Character.isDigit(cadena.charAt(i)))
+                else if(Character.isLetter(cadena.charAt(i)))
                 {
                     estado = 1; concatenar += cadena.charAt(i); columna++;
                 }
@@ -57,13 +61,13 @@ public class Automata {
                 {
                     estado = 2; concatenar += cadena.charAt(i); columna++;
                 }
-                if(cadena.charAt(i)==(dosp) || cadena.charAt(i)==(coma) || cadena.charAt(i)==(llaveA) || cadena.charAt(i)==(llaveC) || cadena.charAt(i)==(ptocoma)) // Signos ':'|| ',' || '{' || '}' || ';'
+                else if(cadena.charAt(i)==(dosp) || cadena.charAt(i)==(coma) || cadena.charAt(i)==(llaveA) || cadena.charAt(i)==(llaveC) || cadena.charAt(i)==(ptocoma)) // Signos ':'|| ',' || '{' || '}' || ';'
                  {                     
-                     estado = 3; concatenar += cadena; columna++;                     
+                     estado = 3; concatenar += cadena.charAt(i); columna++;
                  }
-                 if(cadena.charAt(i)==(comillas))
+                else if(cadena.charAt(i)==(comillas))
                  {
-                     estado = 4; concatenar += cadena; columna++;                     
+                     estado = 4; concatenar += cadena.charAt(i); columna++;
                  }
                 else
                 {
@@ -74,18 +78,22 @@ public class Automata {
                     errorcol = "" + columna;
                     errortkn = "Valor desconocido.";
                     numidtkn = "" + idtkn;
-                    addEToken(errornum,errorlex,errorcol,errortkn,numidtkn);
-                    System.out.println("Estado error: "+ tokene);
+                    addEToken(errornum,errorlex,errorcol,errortkn,numidtkn);                    
                     nutknen++; concatenar=""; tokene="";
                 }
                break;
            case 1:
-               if(Character.isLetter(cadena.charAt(i)))
+               if(cadena.charAt(i)==(tab) || cadena.charAt(i)==(salto) || cadena.charAt(i)==(espacio))
+                {
+                  estado = 1; concatenar += cadena.charAt(i); fila++; columna++;
+                }
+               else if(Character.isLetter(cadena.charAt(i)))
                 {
                     estado = 1; concatenar += cadena.charAt(i); columna++;
                 }
                else
                {
+//                  JOptionPane.showMessageDialog(null,concatenar);
                    AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                       
                       num = "" +nutknen;
                       lex = "" +concatenar;
@@ -98,13 +106,18 @@ public class Automata {
                }
                break;
            case 2:
-               if(Character.isDigit(cadena.charAt(i)))
+               if(cadena.charAt(i)==(tab) || cadena.charAt(i)==(salto) || cadena.charAt(i)==(espacio))
+                {
+                  estado = 2; concatenar += cadena.charAt(i); fila++; columna++;
+                }
+               else if(Character.isDigit(cadena.charAt(i)))
                  {
-                     concatenar += cadena;
+                     concatenar += cadena.charAt(i);
                      estado = 2;
                  }
                  else
                  {
+                   //JOptionPane.showMessageDialog(null,concatenar);
                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                      
                       num = "" +nutknen;
                       lex = "" +concatenar;
@@ -117,13 +130,14 @@ public class Automata {
                  }
                break;
            case 3:
-                    AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                      
+                   //JOptionPane.showMessageDialog(null,concatenar);
+                    AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;              
                     num = "" +nutknen;
                     lex = "" +concatenar;
                     f = ""+fila;
                     col = ""+columna;
                     numtkn = ""+idtkn;
-                    tkn = ""+token;
+                    tkn = ""+token;                    
                     addToken(num,lex,f,col,numtkn,tkn);
                     nutknen++; concatenar = "";
                break;
@@ -131,23 +145,28 @@ public class Automata {
                estado = 5; concatenar += cadena.charAt(i); columna++;
                break;
            case 5:
-               if(cadena.charAt(i)==(comillas))
+               if(cadena.charAt(i)==(tab) || cadena.charAt(i)==(salto) || cadena.charAt(i)==(espacio))
+                {
+                  estado = 5; concatenar += cadena.charAt(i); fila++; columna++;
+                }
+               else if(cadena.charAt(i)==(comillas))
                  {
-                  estado = 6;   concatenar += cadena; columna++;                  
+                  estado = 6;   concatenar += cadena.charAt(i); columna++;                  
                  }
                  else                     
                  {
-                  estado = 5;    concatenar += cadena; columna++;                  
+                  estado = 5;    concatenar += cadena.charAt(i); columna++;                  
                  }
                break;
            case 6:
-               AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                      
+               //JOptionPane.showMessageDialog(null,concatenar);
+               AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                  
                 num = "" +nutknen;
                 lex = "" +concatenar;
                 f = ""+fila;
                 col = ""+columna;
                 numtkn = ""+idtkn;
-                tkn = ""+token;
+                tkn = ""+token;                
                 addToken(num,lex,f,col,numtkn,tkn);
                 nutknen++; concatenar = "";
                break;
@@ -202,13 +221,26 @@ public class Automata {
  
  public void addToken(String numero, String lexema, String fila, String columna, String idtkn, String tkn)
  {
-    ListaTkn aux = new ListaTkn(numero,lexema,fila,columna,idtkn,tkn);     
-    tabla.add(aux);
+    //ListaTkn aux = new ListaTkn(numero,lexema,fila,columna,idtkn,tkn);
+     ListaTkn aux = new ListaTkn();
+     aux.numero = ""+ numero;
+     aux.lexema = "" + lexema;
+     aux.fila = "" + fila;
+     aux.columna = "" + columna;
+     aux.idtkn = "" + idtkn;
+     aux.tkn = "" + tkn;
+     tabla.add(aux);
  }
 
  public void addEToken(String enumero, String elexema, String ecolumna, String etkn, String eidtkn)
  {
-     ListaError aux = new ListaError(enumero,elexema,ecolumna,etkn,eidtkn);
+     //ListaError aux = new ListaError(enumero,elexema,ecolumna,etkn,eidtkn);
+     ListaError aux = new ListaError();
+     aux.Enumero = ""+ enumero;
+     aux.Elexema = "" + elexema;     
+     aux.Ecolumna = "" + ecolumna;
+     aux.Eidtkn = "" + eidtkn;
+     aux.Etkn = "" + etkn;
      Etabla.add(aux);
  }
  
@@ -222,5 +254,64 @@ public class Automata {
  {
      HTML reporte = new HTML();
      reporte.ReporteError(Etabla);
+ }
+ 
+ //----------------------------------------------------------------- Funcionalidad ---------------------------------------------------------------------------
+ String a,b,resultado,puntero ="",punteroi="";
+ Boolean insertar = false, insertar2 = false, sinsertar=false;
+ 
+ public void Graficotxt()
+ {
+    try
+           {
+               File txt = new File("C:/Users/libni/Desktop/CodidoDot.txt");
+               if(!txt.exists())
+               {
+                   txt.createNewFile();
+               }
+               FileWriter fw = new FileWriter(txt);
+               BufferedWriter bw = new BufferedWriter(fw);
+               bw.write("digraph grafica{");
+               bw.write("rankdir=TB;");
+               bw.write("node [shape = record];");
+               
+               for(ListaTkn dato: tabla)
+               {
+                   String temp = dato.lexema;
+                   
+                   if(temp.equals("codigo"))
+                   {
+                       sinsertar = true;
+                   }
+                   if(sinsertar)
+                   {
+                       if(dato.tkn.equals("Numero"))
+                       {
+                           puntero += punteroi + "-> nodo" + dato.lexema + ";";
+                       }
+                   }
+                   if(temp.equals("nombre") || temp.equals("creditos") || temp.equals("prerrequisitos"))
+                   {
+                       insertar = true;
+                       sinsertar = false;
+                   }
+                   if(insertar)
+                   {
+                       
+                   }
+               }    
+               
+               
+               
+               
+               
+               
+               bw.close();
+               JOptionPane.showMessageDialog(null,"Archivo creado");
+           }catch(Exception e)
+           {               
+               e.printStackTrace();
+               JOptionPane.showMessageDialog(null,"No se pudo crear el archivo");
+           }    
  }
 }

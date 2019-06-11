@@ -17,30 +17,33 @@ public class ListaTkn {
         public String idtkn = "";
         public String tkn = "";
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public String getLexema() {
-        return lexema;
-    }
-
-    public String getFila() {
-        return fila;
-    }
-
-    public String getColumna() {
-        return columna;
-    }
-
-    public String getIdtkn() {
-        return idtkn;
-    }
-
-    public String getTkn() {
-        return tkn;
-    }
-    
+//    public String getNumero() {
+//        return numero;
+//    }
+//
+//    public String getLexema() {
+//        return lexema;
+//    }
+//
+//    public String getFila() {
+//        return fila;
+//    }
+//
+//    public String getColumna() {
+//        return columna;
+//    }
+//
+//    public String getIdtkn() {
+//        return idtkn;
+//    }
+//
+//    public String getTkn() {
+//        return tkn;
+//    }
+        public ListaTkn(){
+            
+        }
+        
         public ListaTkn(String num, String lexema, String fila, String columna, String idtkn, String tkn) {
             this.numero = num;
             this.lexema = lexema;

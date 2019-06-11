@@ -40,6 +40,8 @@ public class HTML {
                     + "<td><strong>" + arreglo.get(i).lexema + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).idtkn + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).tkn + "</strong></td>"
+                    + "<td><strong>" + arreglo.get(i).fila + "</strong></td>"
+                    + "<td><strong>" + arreglo.get(i).columna + "</strong></td>"    
                     + "</tr>";                
             }            
         }
@@ -55,6 +57,8 @@ public class HTML {
                 ,"<td><strong>Lexema</strong></td>"
                 ,"<td><strong>ID_Token</strong></td>"
                 ,"<td><strong>Token</strong></td>"
+                ,"<td><strong>Fila</strong></td>"
+                ,"<td><strong>Columna</strong></td>"
                 ,"</tr>"
                 ,listaA
                 ,"</table>"
@@ -75,6 +79,7 @@ public class HTML {
                 bw.write(item);
                }               
                bw.close();
+               JOptionPane.showMessageDialog(null,"Archivo creado");
            }catch(Exception e)
            {               
                e.printStackTrace();
@@ -128,6 +133,7 @@ public class HTML {
                 bw.write(item);
                }               
                bw.close();
+               JOptionPane.showMessageDialog(null,"Archivo creado");
            }catch(Exception e)
            {               
                e.printStackTrace();

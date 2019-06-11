@@ -24,24 +24,28 @@ public class ListaError {
             this.Etkn = Etkn;
             this.Eidtkn = Eidtkn;
         }
-       
-        public String getEnumero() {
-            return Enumero;
+        
+        public ListaError() {
+            
         }
-
-        public String getElexema() {
-            return Elexema;
-        }        
-
-        public String getEcolumna() {
-            return Ecolumna;
-        }
-
-        public String getEtkn() {
-            return Etkn;
-        }
-
-        public String getEidtkn() {
-            return Eidtkn;
-        }    
+        
+//        public String getEnumero() {
+//            return Enumero;
+//        }
+//
+//        public String getElexema() {
+//            return Elexema;
+//        }        
+//
+//        public String getEcolumna() {
+//            return Ecolumna;
+//        }
+//
+//        public String getEtkn() {
+//            return Etkn;
+//        }
+//
+//        public String getEidtkn() {
+//            return Eidtkn;
+//        }        
 }
