@@ -11,66 +11,43 @@ package ListasPractica;
  */
 public class ListaError {
     
-        public String Enumero = "";
+        public int Enumero = 0;
         public String Elexema = "";
-        public String Ecolumna = "";
+        public int Ecolumna = 0;
         public String Etkn = "";
-        public String Eidtkn = "";              
+        public int Eidtkn = 0;              
 
-    public ListaError() {
-        
+    @Override
+    public String toString() {
+        return "ListaError{" + "Enumero=" + Enumero + ", Elexema=" + Elexema + ", Ecolumna=" + Ecolumna + ", Etkn=" + Etkn + ", Eidtkn=" + Eidtkn + '}';
     }
     
-    public ListaError(String Enumero, String Elexema, String Ecolumna, String Etkn, String Eidtkn) {
+    public ListaError(int Enumero, String Elexema, int Ecolumna, String Etkn, int Eidtkn) {
             this.Enumero = Enumero;
             this.Elexema = Elexema;
-            this.Ecolumna = Ecolumna;            
+            this.Ecolumna = Ecolumna;
             this.Etkn = Etkn;
             this.Eidtkn = Eidtkn;
-        }          
-
-    public String getEnumero() {
+        }               
+        
+    public int getEnumero() {
         return Enumero;
-    }
-
-    public void setEnumero(String Enumero) {
-        this.Enumero = Enumero;
     }
 
     public String getElexema() {
         return Elexema;
     }
 
-    public void setElexema(String Elexema) {
-        this.Elexema = Elexema;
-    }
-
-    public String getEcolumna() {
+    public int getEcolumna() {
         return Ecolumna;
-    }
-
-    public void setEcolumna(String Ecolumna) {
-        this.Ecolumna = Ecolumna;
     }
 
     public String getEtkn() {
         return Etkn;
     }
 
-    public void setEtkn(String Etkn) {
-        this.Etkn = Etkn;
-    }
-
-    public String getEidtkn() {
+    public int getEidtkn() {
         return Eidtkn;
-    }
-
-    public void setEidtkn(String Eidtkn) {
-        this.Eidtkn = Eidtkn;
-    }
-
-    @Override
-    public String toString() {
-        return "ListaError{" + "Enumero=" + Enumero + ", Elexema=" + Elexema + ", Ecolumna=" + Ecolumna + ", Etkn=" + Etkn + ", Eidtkn=" + Eidtkn + '}';
-    }
+    }       
+   
 }

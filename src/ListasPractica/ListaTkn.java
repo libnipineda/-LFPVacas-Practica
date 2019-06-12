@@ -10,51 +10,54 @@ package ListasPractica;
  * @author libni
  */
 public class ListaTkn {
-        public String numero = "";
+        public int numero = 0;
         public String lexema = "";
-        public String fila = "";
-        public String columna = "";
-        public String idtkn = "";
-        public String tkn = "";         
-        private NodoTkn inicio;
+        public int fila = 0;
+        public int columna = 0;
+        public int idtkn = 0;
+        public String tkn = "";
+
+    @Override
+    public String toString() {
+        return "ListaTkn{" + "numero=" + numero + ", lexema=" + lexema + ", fila=" + fila + ", columna=" + columna + ", idtkn=" + idtkn + ", tkn=" + tkn + '}';
+    }
+
+    public ListaTkn()
+    {
         
-    public ListaTkn() {
-        inicio=null;
     }
     
-    public boolean esVacia(){
-        return inicio==null;
-    }
-    
-    public void agregarFinal(String num,String lex,String fil,String col, String idtk, String tk){
-        NodoTkn nuevo = new NodoTkn();
-        nuevo.setNumero(num);
-        nuevo.setLexema(lex);
-        nuevo.setFila(fil);
-        nuevo.setColumna(col);
-        nuevo.setIdtkn(idtk);
-        nuevo.setTkn(tk);
+    public ListaTkn(int numero, String lexema, int fila, int columna, int idtkn, String tkn) {
+        this.numero = numero;
+                this.lexema = lexema;
+                        this.fila = fila;
+                                this.columna = columna;
+                                        this.idtkn = idtkn;
+                                                this.tkn = tkn;
+    }    
         
-        if (esVacia()) {
-            inicio=nuevo;
-        }else{
-            NodoTkn aux = inicio;
-            while (inicio.getSiguiente() !=null) {
-                aux = aux.getSiguiente();
-            }
-            aux.setSiguiente(nuevo);
-        }
+    public int getNumero() {
+        return numero;
     }
-    
-    public void mostrar(){
-        if (!esVacia()) {
-            NodoTkn aux = inicio;
-            int i=0;
-            while(aux !=null){
-                System.out.println(i+"- Lexema: "+aux.getLexema());
-                aux=aux.getSiguiente();
-                i++;
-            }
-        }
-    }              
+
+    public String getLexema() {
+        return lexema;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public int getColumna() {
+        return columna;
+    }
+
+    public int getIdtkn() {
+        return idtkn;
+    }
+
+    public String getTkn() {
+        return tkn;
+    }    
+        
 }

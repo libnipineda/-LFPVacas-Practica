@@ -12,22 +12,25 @@ import Reporte.HTML;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.omg.CORBA.Environment;
 
 /**
  *
  * @author libni
  */
 public class Token {
-ListaError ELista = new ListaError();
-ListaTkn Lista = new ListaTkn();
+List<ListaError> ELista = new ArrayList<ListaError>();
+List<ListaTkn> Lista = new ArrayList<ListaTkn>();
      int idtkn;
      int nutknen = 0;
      int idtkns = 12; // numero de tokens definidos
      int fila = 0;
      int columna = 0;
      String token = "";
-     String num,f,col,id;
+     private String retorno,retorno1;
      
 public void Scanner(String entrada)
 {
@@ -73,7 +76,8 @@ public void Scanner(String entrada)
 //                    temp.Ecolumna= "" + columna;
 //                    temp.Etkn= "Valor desconocido.";
 //                    temp.Eidtkn = "" + idtkn;
-//                    Etabla.add(temp);     
+//                    Etabla.add(temp);
+                     agregarError(nutknen,Econcatenar,columna,"Valor desconocido",idtkn);
                     nutknen++; concatenar=""; Econcatenar="";
                 }
                break;
@@ -101,8 +105,7 @@ public void Scanner(String entrada)
 //                System.out.println("Estado 1");
 //                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);                
 //                tabla.add(aux);
-                num =""+nutknen; f = ""+fila; col =""+columna; id = ""+idtkn;
-                Lista.agregarFinal(num, concatenar,f,col,id, token);
+                agregarTkn(nutknen,concatenar,fila,columna,idtkn,token);
                 nutknen++; concatenar = "";
                }
                break;
@@ -131,8 +134,7 @@ public void Scanner(String entrada)
 ////                System.out.println("Estado 2");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);                
 //                tabla.add(aux);        
-                num =""+nutknen; f = ""+fila; col =""+columna; id = ""+idtkn;
-                Lista.agregarFinal(num, concatenar,f,col,id, token);
+                agregarTkn(nutknen,concatenar,fila,columna,12,"Numero");
                 nutknen++; concatenar = "";   
                }
                break;
@@ -150,8 +152,7 @@ public void Scanner(String entrada)
 ////                System.out.println("Estado 3");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);                
 //                tabla.add(aux);        
-                num =""+nutknen; f = ""+fila; col =""+columna; id = ""+idtkn;
-                Lista.agregarFinal(num, concatenar,f,col,id, token);
+                agregarTkn(nutknen,concatenar,fila,columna,idtkn,token);
                 nutknen++; concatenar = "";
                break;
            case 4:
@@ -192,8 +193,7 @@ public void Scanner(String entrada)
 ////                System.out.println("Estado 6");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);
 //                tabla.add(aux);                      
-                num =""+nutknen; f = ""+fila; col =""+columna; id = ""+idtkn;
-                Lista.agregarFinal(num, concatenar,f,col,id, token);
+                agregarTkn(nutknen,concatenar,fila,columna,idtkn,token);
                 nutknen++; concatenar = "";
                break;
         }         
@@ -245,16 +245,48 @@ public void AnalizarTkn(String tkn)
     }
 }        
 
+public void agregarTkn(int numero, String lexema, int fila, int columna, int idtkn, String tkn)
+{
+    ListaTkn nuevo = new ListaTkn(numero,lexema,fila,columna,idtkn,tkn);
+    Lista.add(nuevo);    
+}
+
+public void agregarError(int Enumero, String Elexema, int Ecolumna, String Etkn, int Eidtkn)
+{
+    ListaError aux = new ListaError(Enumero,Elexema,Ecolumna,Etkn,Eidtkn);
+    ELista.add(aux);    
+}
+
+public void generarListaA()
+{   
+    System.out.println(Lista.toString());
+    for(int i=0; i < Lista.size(); i++)
+    {
+        System.out.println("valores en la lista: "+ Lista.toString());
+    } 
+}
+
+public void generarListaB()
+{
+    for(int i=0; i < ELista.size(); i++)
+    {
+        System.out.println("valores en la lista de errores: "+ ELista.toString());
+    } 
+}
+
  public void ReporteTkn()
  {
+     generarListaA();
      HTML reporte = new HTML();
-     reporte.ReporteToken((List<ListaTkn>) Lista);
+     reporte.ReporteToken(Lista);
+     generarListaA();
  }
 
  public void ReporteE()
  {
+     generarListaB();
      HTML reporte = new HTML();
-     reporte.ReporteError((List<ListaError>) ELista);
+     reporte.ReporteError(ELista);
  }
  
 //----------------------------------------------------------------- Funcionalidad ---------------------------------------------------------------------------

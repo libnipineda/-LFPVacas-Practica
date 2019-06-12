@@ -12,6 +12,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -44,49 +45,56 @@ public class HTML {
                     + "<td><strong>" + arreglo.get(i).fila + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).columna + "</strong></td>"                    
                     + "</tr>";
+                System.out.println(arreglo.toString());
             }            
-        }        
-        String[] texto = { "<html>"
-                    ,"<head>"
-                ,"<title> LFP PRACTICA NO. 1  TABLA DE TOKEN´S</title>"
-                ,"</head>"
-                ,"<body>"
-                ,"<h1> Listado de Tokens</h1>"
-                ,"<table border>"
-                ,"<tr>"
-                ,"<td><strong>No</strong></td>"
-                ,"<td><strong>Lexema</strong></td>"
-                ,"<td><strong>ID_Token</strong></td>"
-                ,"<td><strong>Token</strong></td>"
-                ,"<td><strong>Fila</strong></td>"
-                ,"<td><strong>Columna</strong></td>"
-                ,"</tr>"
-                ,Datos
-                ,"</table>"
-                ,"</body>"
-                ,"</html> "
-                };
-           try
-           {
-               File archivo = new File("C:/Users/libni/Desktop/ReporteToken.html");
-               if(!archivo.exists())
-               {
-                   archivo.createNewFile();
-               }
-               FileWriter fw = new FileWriter(archivo);
-               Desktop.getDesktop().open(archivo);
-               BufferedWriter bw = new BufferedWriter(fw);
-               for(String item : texto)
-               {
-                bw.write(item.toString());                   
-               }               
-               bw.close();
-               JOptionPane.showMessageDialog(null,"Archivo creado");
-           }catch(Exception e)
-           {               
-               e.printStackTrace();
-               JOptionPane.showMessageDialog(null,"No se pudo crear el archivo");
-           }                 
+        }                                                                                                                                                                    
+        try
+        {
+         FileWriter archivo = new FileWriter("C:/Users/libni/Desktop/ReporteToken.html");
+         PrintWriter write = new PrintWriter(archivo);
+         write.println("<html>");
+         write.println("<head>");
+         write.println("<title> LFP PRACTICA NO. 1  TABLA DE ERRORES</title>");
+         write.println("</head>");
+         write.println("<body>");
+         write.println("<h1> Listado de Errores</h1>");
+         write.println("<table border>");
+         write.println("<tr>");
+         write.println("<td><strong>No</strong></td>");
+         write.println("<td><strong>Caracter</strong></td>");
+         write.println("<td><strong>Fila</strong></td>");
+         write.println("<td><strong>Columna</strong></td>");
+         write.println("<td><strong>Descripcion</strong></td>");
+         write.println("</tr>");
+         write.println(Datos);
+         write.println( "</table>");
+         write.println("</body>");
+         write.println( "</html>");
+        archivo.close();
+        Abrir();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void Abrir()
+    {        
+     try
+     {
+         File f = new File("C:/Users/libni/Desktop/ReporteToken.html");
+         Desktop.getDesktop().open(f);
+     }
+     catch(IOException e)
+     {
+         e.printStackTrace();;
+     }
+     catch(IllegalArgumentException e)
+     {
+         JOptionPane.showMessageDialog(null, "Archivo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+         e.printStackTrace();
+     }
     }
     
     public void ReporteError(List<ListaError> datos)
@@ -103,43 +111,52 @@ public class HTML {
                     +"</tr>";
             }
         }
-        String[] text = { "<html>"
-                        ,"<head>"
-                        ,"<title> LFP PRACTICA NO. 1  TABLA DE ERRORES</title>"
-                        ,"</head>"
-                        ,"<body>"
-                        ,"<h1> Listado de Errores</h1>"
-                        ,"<table border>"
-                        ,"<tr>"
-                        ,"<td><strong>No</strong></td>"
-                        ,"<td><strong>Caracter</strong></td>"
-                        ,"<td><strong>Fila</strong></td>"
-                        ,"<td><strong>Columna</strong></td>"
-                        ,"<td><strong>Descripcion</strong></td>"
-                        ,"</tr>"
-                        ,ListaB
-                        ,"</table>"
-                        ,"</body>"
-                        ,"</html>"};        
         try
-           {
-               File archivo = new File("C:/Users/libni/Desktop/ReporteError.html");
-               if(!archivo.exists())
-               {
-                   archivo.createNewFile();
-               }
-               FileWriter fw = new FileWriter(archivo);
-               BufferedWriter bw = new BufferedWriter(fw);
-               for(String item : text)
-               {
-                bw.write(item);
-               }               
-               bw.close();
-               JOptionPane.showMessageDialog(null,"Archivo creado");
-           }catch(Exception e)
-           {               
-               e.printStackTrace();
-               JOptionPane.showMessageDialog(null,"No se pudo crear el archivo");
-           }      
+        {
+         FileWriter archivo = new FileWriter("C:/Users/libni/Desktop/ReporteError.html");
+         PrintWriter write = new PrintWriter(archivo);
+        write.println("<html>");
+        write.println("<head>");
+        write.println("<title> LFP PRACTICA NO. 1  TABLA DE ERRORES</title>");
+        write.println("</head>");
+        write.println("<body>");
+        write.println("<h1> Listado de Errores</h1>");
+        write.println("<table border>");
+        write.println("<tr>");
+        write.println("<td><strong>No</strong></td>");
+        write.println("<td><strong>Caracter</strong></td>");
+        write.println("<td><strong>Fila</strong></td>");
+        write.println("<td><strong>Columna</strong></td>");
+        write.println("<td><strong>Descripcion</strong></td>");
+        write.println("</tr>");
+        write.println(ListaB);
+        write.println("</table>");
+        write.println("</body>");
+        write.println("</html>");
+        archivo.close();
+        EAbrir();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void EAbrir()
+    {        
+     try
+     {
+         File f = new File("C:/Users/libni/Desktop/ReporteError.html");
+         Desktop.getDesktop().open(f);
+     }
+     catch(IOException e)
+     {
+         e.printStackTrace();;
+     }
+     catch(IllegalArgumentException e)
+     {
+         JOptionPane.showMessageDialog(null, "Archivo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+         e.printStackTrace();
+     }
     }
 }

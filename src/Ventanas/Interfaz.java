@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 //import AnalizadorLexico.Automata;
 import AnalizadorLexico.Token;
 import Reporte.HTML;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -143,9 +144,19 @@ JFileChooser seleccionar = new JFileChooser();
         HELP.add(jMenuItem5);
 
         jMenuItem6.setText("Manual Usuario");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         HELP.add(jMenuItem6);
 
         jMenuItem7.setText("Manual Tecnico");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         HELP.add(jMenuItem7);
 
         jMenuBar2.add(HELP);
@@ -281,6 +292,42 @@ JFileChooser seleccionar = new JFileChooser();
         Token reporte = new Token();
         reporte.ReporteE();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+         try
+     {
+         File f = new File("E:/Lenguajes/Vacaciones/[LFP]Practica1_201403541/Manual de Usuario.pdf");
+         Desktop.getDesktop().open(f);
+     }
+     catch(IOException e)
+     {
+         e.printStackTrace();;
+     }
+     catch(IllegalArgumentException e)
+     {
+         JOptionPane.showMessageDialog(null, "Archivo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+         e.printStackTrace();
+     }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        try
+     {
+         File f = new File("E:/Lenguajes/Vacaciones/[LFP]Practica1_201403541/Manual Técnico.pdf");
+         Desktop.getDesktop().open(f);
+     }
+     catch(IOException e)
+     {
+         e.printStackTrace();;
+     }
+     catch(IllegalArgumentException e)
+     {
+         JOptionPane.showMessageDialog(null, "Archivo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+         e.printStackTrace();
+     }
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     public String Abrir(File archivo)
     {
