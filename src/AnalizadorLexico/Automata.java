@@ -11,25 +11,28 @@ import ListasPractica.ListaTkn;
 import ListasPractica.ListaError;
 import java.util.ArrayList;
 import Reporte.HTML; 
+import java.awt.Desktop;
 import java.io.*;
 import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Stream;
+
 /**
  *
  * @author libni
  */
 public class Automata {
- List<ListaTkn> tabla;
- List<ListaError> Etabla;
- int idtkn, nutknen = 0, idtkns=12, fila =0, columna=0;
- String token,num,lex,f,col,numtkn,tkn;
+ ArrayList<ListaTkn> tabla = new ArrayList<ListaTkn>();
+ ArrayList<ListaError> Etabla = new ArrayList<ListaError>();
+ int idtkn; int nutknen = 0; int idtkns=12; int fila =0; int columna=0;
+ String token;
  String tokene =""; 
  int numnodo=0;
- 
- public Automata()
- {
-     this.tabla = new ArrayList<ListaTkn>();
-     this.Etabla = new ArrayList<ListaError>();
- }
+ ListaError temp = new ListaError();
+ ListaTkn aux = new ListaTkn();
  
  public void Lexico(String cadena)
  {        
@@ -71,14 +74,14 @@ public class Automata {
                  }
                 else
                 {
-                    tokene += cadena.charAt(i);
-                    String errornum,errorlex,errorcol,errortkn,numidtkn;
-                    errornum = ""+nutknen;
-                    errorlex = tokene;
-                    errorcol = "" + columna;
-                    errortkn = "Valor desconocido.";
-                    numidtkn = "" + idtkn;
-                    addEToken(errornum,errorlex,errorcol,errortkn,numidtkn);                    
+                    tokene += cadena.charAt(i);                    
+                    temp.Enumero= ""+nutknen;
+                    temp.Elexema= tokene;
+                    temp.Ecolumna= "" + columna;
+                    temp.Etkn= "Valor desconocido.";
+                    temp.Eidtkn = "" + idtkn;
+                    Etabla.add(temp);
+                    //addEToken(errornum,errorlex,errorcol,errortkn,numidtkn);
                     nutknen++; concatenar=""; tokene="";
                 }
                break;
@@ -95,13 +98,14 @@ public class Automata {
                {
 //                  JOptionPane.showMessageDialog(null,concatenar);
                    AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                       
-                      num = "" +nutknen;
-                      lex = "" +concatenar;
-                      f = ""+fila;
-                      col = ""+columna;
-                      numtkn = ""+idtkn;
-                      tkn = ""+token;
-                      addToken(num,lex,f,col,numtkn,tkn);
+                      aux.numero = "" +nutknen;
+                      aux.lexema = "" +concatenar;
+                      aux.fila = ""+fila;
+                      aux.columna= ""+columna;
+                      aux.idtkn = ""+idtkn;
+                      aux.tkn = ""+token;
+                      tabla.add(aux);
+                      //addToken(num,lex,f,col,numtkn,tkn);
                       nutknen++; concatenar = "";
                }
                break;
@@ -119,26 +123,28 @@ public class Automata {
                  {
                    //JOptionPane.showMessageDialog(null,concatenar);
                      AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                      
-                      num = "" +nutknen;
-                      lex = "" +concatenar;
-                      f = ""+fila;
-                      col = ""+columna;
-                      numtkn = "12";
-                      tkn = "Numero";
-                      addToken(num,lex,f,col,numtkn,tkn);
+                      aux.numero = "" +nutknen;
+                      aux.lexema = "" +concatenar;
+                      aux.fila = ""+fila;
+                      aux.columna= ""+columna;
+                      aux.idtkn = "12";
+                      aux.tkn = "Numero";
+                      tabla.add(aux);
+                      //addToken(num,lex,f,col,numtkn,tkn);
                       nutknen++; concatenar = "";
                  }
                break;
            case 3:
                    //JOptionPane.showMessageDialog(null,concatenar);
                     AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;              
-                    num = "" +nutknen;
-                    lex = "" +concatenar;
-                    f = ""+fila;
-                    col = ""+columna;
-                    numtkn = ""+idtkn;
-                    tkn = ""+token;                    
-                    addToken(num,lex,f,col,numtkn,tkn);
+                    aux.numero = "" +nutknen;
+                      aux.lexema = "" +concatenar;
+                      aux.fila = ""+fila;
+                      aux.columna= ""+columna;
+                      aux.idtkn = ""+idtkn;
+                      aux.tkn = ""+token;
+                      tabla.add(aux);                  
+                    //addToken(num,lex,f,col,numtkn,tkn);
                     nutknen++; concatenar = "";
                break;
            case 4:
@@ -161,18 +167,20 @@ public class Automata {
            case 6:
                //JOptionPane.showMessageDialog(null,concatenar);
                AnalizarTkn(concatenar); i--; estado = estado -1; estado=0;                  
-                num = "" +nutknen;
-                lex = "" +concatenar;
-                f = ""+fila;
-                col = ""+columna;
-                numtkn = ""+idtkn;
-                tkn = ""+token;                
-                addToken(num,lex,f,col,numtkn,tkn);
+                aux.numero = "" +nutknen;
+                      aux.lexema = "" +concatenar;
+                      aux.fila = ""+fila;
+                      aux.columna= ""+columna;
+                      aux.idtkn = ""+idtkn;
+                      aux.tkn = ""+token;
+                      tabla.add(aux);             
+                //addToken(num,lex,f,col,numtkn,tkn);
                 nutknen++; concatenar = "";
                break;
         }
      }     
-     JOptionPane.showMessageDialog(null,"Su analisis se a hecho con exito.");     
+     JOptionPane.showMessageDialog(null,"Su analisis se a hecho con exito.");
+     VerLista();
  }
  
  public void AnalizarTkn(String tkn)
@@ -219,41 +227,38 @@ public class Automata {
      }
  }
  
- public void addToken(String numero, String lexema, String fila, String columna, String idtkn, String tkn)
+ public void VerLista()
  {
-    //ListaTkn aux = new ListaTkn(numero,lexema,fila,columna,idtkn,tkn);
-     ListaTkn aux = new ListaTkn();
-     aux.numero = ""+ numero;
-     aux.lexema = "" + lexema;
-     aux.fila = "" + fila;
-     aux.columna = "" + columna;
-     aux.idtkn = "" + idtkn;
-     aux.tkn = "" + tkn;
-     tabla.add(aux);
- }
-
- public void addEToken(String enumero, String elexema, String ecolumna, String etkn, String eidtkn)
- {
-     //ListaError aux = new ListaError(enumero,elexema,ecolumna,etkn,eidtkn);
-     ListaError aux = new ListaError();
-     aux.Enumero = ""+ enumero;
-     aux.Elexema = "" + elexema;     
-     aux.Ecolumna = "" + ecolumna;
-     aux.Eidtkn = "" + eidtkn;
-     aux.Etkn = "" + etkn;
-     Etabla.add(aux);
+     for(ListaTkn item: tabla)
+     {
+         System.out.println("valor del idtkn: "+item.idtkn.toString());
+         System.out.println("valor del lexema: "+item.lexema.toString());
+         System.out.println("valor del tkn: "+item.tkn.toString());
+     }
  }
  
- public void Imprimir()
+ public void Imprimir() 
  {
      HTML reporte = new HTML();
-     reporte.ReporteToken(tabla);     
+     reporte.ReporteToken(tabla);
+//     ProcessBuilder p = new ProcessBuilder("C:/Users/libni/Desktop/ReporteError.html");
+//     try {
+//         p.start();
+//     } catch (IOException ex) {
+//         Logger.getLogger(Automata.class.getName()).log(Level.SEVERE, null, ex);
+//     }
  }
  
  public void Imprimir1()
  {
      HTML reporte = new HTML();
      reporte.ReporteError(Etabla);
+//     ProcessBuilder p = new ProcessBuilder("C:/Users/libni/Desktop/ReporteError.html");
+//     try {
+//         p.start();
+//     } catch (IOException ex) {
+//         Logger.getLogger(Automata.class.getName()).log(Level.SEVERE, null, ex);
+//     }
  }
  
  //----------------------------------------------------------------- Funcionalidad ---------------------------------------------------------------------------
@@ -314,4 +319,5 @@ public class Automata {
                JOptionPane.showMessageDialog(null,"No se pudo crear el archivo");
            }    
  }
+
 }

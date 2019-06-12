@@ -11,8 +11,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import AnalizadorLexico.Automata;
+//import AnalizadorLexico.Automata;
+import AnalizadorLexico.Token;
 import Reporte.HTML;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -240,8 +244,12 @@ JFileChooser seleccionar = new JFileChooser();
 
     private void SCANNERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCANNERActionPerformed
         // TODO add your handling code here:
-        Automata datos = new Automata();       
-        datos.Lexico(txtArea.getText());
+        //Automata datos = new Automata();       
+        //datos.Lexico(txtArea.getText());
+        Token datos = new Token();
+        datos.Scanner(txtArea.getText());
+        //datos.Graficotxt();
+        datos.VerLista();
     }//GEN-LAST:event_SCANNERActionPerformed
 
     private void SALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SALIRActionPerformed
@@ -263,13 +271,15 @@ JFileChooser seleccionar = new JFileChooser();
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:        
-        Automata reporte = new Automata();
-        reporte.Imprimir();
+    //    Automata reporte = new Automata();    
+        Token reporte = new Token();
+        reporte.Imprimir();    
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
-        Automata reporte = new Automata();
+  //      Automata reporte = new Automata();
+        Token reporte = new Token();
         reporte.Imprimir1();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 

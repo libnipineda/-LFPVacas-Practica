@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  * @author libni
  */
 public class HTML {    
-    String listaA = "";
+    String Datos = "";
     String ListaB = "";
     
     
@@ -35,16 +35,16 @@ public class HTML {
         {
             for(int i=0; i < arreglo.size(); i++)
             {                                
-                listaA = listaA + "<tr>"
-                    + "<td><strong>" + arreglo.get(i).numero  + "</strong></td>"                    
+                Datos = Datos + "<tr>"
+                    + "<td><strong>" + arreglo.get(i).numero  + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).lexema + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).idtkn + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).tkn + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).fila + "</strong></td>"
-                    + "<td><strong>" + arreglo.get(i).columna + "</strong></td>"    
-                    + "</tr>";                
+                    + "<td><strong>" + arreglo.get(i).columna + "</strong></td>"
+                    + "</tr>";
             }            
-        }
+        }        
         String[] texto = { "<html>"
                     ,"<head>"
                 ,"<title> LFP PRACTICA NO. 1  TABLA DE TOKEN´S</title>"
@@ -60,11 +60,11 @@ public class HTML {
                 ,"<td><strong>Fila</strong></td>"
                 ,"<td><strong>Columna</strong></td>"
                 ,"</tr>"
-                ,listaA
+                ,Datos
                 ,"</table>"
                 ,"</body>"
                 ,"</html> "
-                };                          
+                };
            try
            {
                File archivo = new File("C:/Users/libni/Desktop/ReporteToken.html");
@@ -76,7 +76,8 @@ public class HTML {
                BufferedWriter bw = new BufferedWriter(fw);
                for(String item : texto)
                {
-                bw.write(item);
+                bw.write(item.toString());
+                   System.out.println("HTML QUE VIENE: "+ item.toString());
                }               
                bw.close();
                JOptionPane.showMessageDialog(null,"Archivo creado");
