@@ -134,7 +134,7 @@ public void Scanner(String entrada)
 ////                System.out.println("Estado 2");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);                
 //                tabla.add(aux);        
-                agregarTkn(nutknen,concatenar,fila,columna,12,"Numero");
+                agregarTkn(nutknen,concatenar,fila,columna,12,"Numero");                
                 nutknen++; concatenar = "";   
                }
                break;
@@ -152,7 +152,7 @@ public void Scanner(String entrada)
 ////                System.out.println("Estado 3");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);                
 //                tabla.add(aux);        
-                agregarTkn(nutknen,concatenar,fila,columna,idtkn,token);
+                agregarTkn(nutknen,concatenar,fila,columna,idtkn,token);               
                 nutknen++; concatenar = "";
                break;
            case 4:
@@ -193,7 +193,7 @@ public void Scanner(String entrada)
 ////                System.out.println("Estado 6");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);
 //                tabla.add(aux);                      
-                agregarTkn(nutknen,concatenar,fila,columna,idtkn,token);
+                agregarTkn(nutknen,concatenar,fila,columna,idtkn,token);               
                 nutknen++; concatenar = "";
                break;
         }         
@@ -275,16 +275,14 @@ public void generarListaB()
 }
 
  public void ReporteTkn()
- {
-     generarListaA();
+ {     
      HTML reporte = new HTML();
      reporte.ReporteToken(Lista);
      generarListaA();
  }
 
  public void ReporteE()
- {
-     generarListaB();
+ {     
      HTML reporte = new HTML();
      reporte.ReporteError(ELista);
  }
@@ -293,74 +291,74 @@ public void generarListaB()
  String a,b,resultado,puntero ="",punteroi="";
  Boolean insertar = false, insertar2 = false, sinsertar=false;
  
-// public void Graficotxt()
-// {
-//    try
-//           {
-//               File txt = new File("C:/Users/libni/Desktop/CodigoDot.txt");
-//               if(!txt.exists())
-//               {
-//                   txt.createNewFile();
-//               }
-//               FileWriter fw = new FileWriter(txt);
-//               BufferedWriter bw = new BufferedWriter(fw);
-//               bw.write("digraph grafica{");
-//               bw.write("rankdir=TB;");
-//               bw.write("node [shape = record];");
-//               
-//               for(ListaTkn dato: Lista)
-//               {
-//                   String temp = dato.lexema;
-//                   
-//                   if(temp.equals("codigo"))
-//                   {
-//                       sinsertar = true;
-//                   }
-//                   if(sinsertar)
-//                   {
-//                       if(dato.tkn.equals("Numero"))
-//                       {
-//                           puntero += punteroi + "-> nodo" + dato.lexema + ";";
-//                       }
-//                   }
-//                   if(temp.equals("nombre") || temp.equals("creditos") || temp.equals("prerrequisitos"))
-//                   {
-//                       insertar = true;
-//                       sinsertar = false;
-//                   }                   
-//                   if(insertar)
-//                   {
-//                       if(dato.tkn.equals("Numero"))
-//                       {
-//                          a = dato.lexema;
-//                          insertar = false;                       
-//                          punteroi = "nodo" + dato.lexema;
-//                       }
-//                       if(dato.tkn.equals("cadena"))
-//                       {
-//                           b = "|" +dato.lexema;
-//                           b = b.replace('\"',' ');                                                      
-//                           b = b.trim();
-//                           insertar = false;
-//                           insertar2 = true;
-//                       }                       
-//                   }
-//                   if(insertar2)
-//                   {
-//                       String resultado = a+b;
-//                       bw.write("nodo" + a + "[ label = \"codigo: " + resultado + "\"]");
-//                       insertar2 = false;
-//                   }
-//               }    
-//               bw.write(puntero);
-//               bw.write("}");               
-//               bw.close();
-//               JOptionPane.showMessageDialog(null,"Archivo creado");
-//           }catch(Exception e)
-//           {               
-//               e.printStackTrace();
-//               JOptionPane.showMessageDialog(null,"No se pudo crear el archivo");
-//           }    
-// }
-
+ public void Graficotxt()
+ {
+    try
+           {
+               File txt = new File("C:/Users/libni/Desktop/CodigoDot.txt");
+               if(!txt.exists())
+               {
+                   txt.createNewFile();
+               }
+               FileWriter fw = new FileWriter(txt);
+               BufferedWriter bw = new BufferedWriter(fw);
+               bw.write("digraph grafica{");
+               bw.write("rankdir=TB;");
+               bw.write("node [shape = record];");
+               
+               for(ListaTkn dato: Lista)
+               {
+                   String temp = dato.lexema;
+                   
+                   if(temp.equals("prerrequisitos"))
+                   {
+                       sinsertar = true;
+                   }
+                   if(sinsertar)
+                   {
+                       if(dato.tkn.equals("Numero"))
+                       {
+                           puntero += punteroi + "-> nodo" + dato.lexema + ";";
+                       }
+                   }
+                   if(temp.equals("codigo") || temp.equals("nombre") || temp.equals("creditos"))
+                   {
+                       insertar = true;
+                       sinsertar = false;
+                   }                   
+                   if(insertar)
+                   {
+                       if(dato.tkn.equals("Numero"))
+                       {
+                          a = dato.lexema;
+                          insertar = false;                       
+                          punteroi = "nodo" + dato.lexema;
+                       }
+                       if(dato.tkn.equals("cadena"))
+                       {
+                           b = "|" +dato.lexema;
+                           b = b.replace('\"',' ');                                                      
+                           b = b.trim();
+                           insertar = false;
+                           insertar2 = true;
+                       }                       
+                   }
+                   if(insertar2)
+                   {
+                       String resultado = a+b;
+                       bw.write("nodo" + a + "[ label = \"codigo: " + resultado + "\"]");
+                       insertar2 = false;
+                   }
+               }    
+               bw.write(puntero);
+               bw.write("}");               
+               bw.close();
+               JOptionPane.showMessageDialog(null,"Archivo creado");
+           }catch(Exception e)
+           {               
+               e.printStackTrace();
+               JOptionPane.showMessageDialog(null,"No se pudo crear el archivo");
+           }    
+ }
+   
 }

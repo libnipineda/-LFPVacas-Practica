@@ -11,9 +11,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-//import AnalizadorLexico.Automata;
+import java.util.*;
 import AnalizadorLexico.Token;
+import ListasPractica.ListaTkn;
 import Reporte.HTML;
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -45,8 +47,8 @@ JFileChooser seleccionar = new JFileChooser();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtArea = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtArea = new javax.swing.JTextPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         ARCHIVO = new javax.swing.JMenu();
         ABRIR = new javax.swing.JMenuItem();
@@ -65,9 +67,7 @@ JFileChooser seleccionar = new JFileChooser();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("[LFP]Practica1");
 
-        txtArea.setColumns(20);
-        txtArea.setRows(5);
-        jScrollPane1.setViewportView(txtArea);
+        jScrollPane2.setViewportView(txtArea);
 
         ARCHIVO.setText("Archivo");
 
@@ -169,14 +169,14 @@ JFileChooser seleccionar = new JFileChooser();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -254,12 +254,12 @@ JFileChooser seleccionar = new JFileChooser();
     }//GEN-LAST:event_GUARDARCActionPerformed
 
     private void SCANNERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCANNERActionPerformed
-        // TODO add your handling code here:
-        //Automata datos = new Automata();       
-        //datos.Lexico(txtArea.getText());
-        Token datos = new Token();
+        // TODO add your handling code here:       
+        Token datos = new Token();        
         datos.Scanner(txtArea.getText());
-        //datos.Graficotxt();        
+        datos.generarListaA();
+        datos.generarListaB();
+        datos.Graficotxt();        
     }//GEN-LAST:event_SCANNERActionPerformed
 
     private void SALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SALIRActionPerformed
@@ -379,7 +379,298 @@ JFileChooser seleccionar = new JFileChooser();
         }
         return mensaje;
     }
+    // ------------------------------------------------------------------ pintar letras --------------------------------------------------------------
+    // palabra reservada -> azul, numero -> rojo, cadenas -> verde, llaves y corchetes -> morado, coma,punto y coma, dos puntos -> amarillo, otros -> negro
     
+    ListaTkn hola = new ListaTkn();
+    String comparar; int bindice;
+    public void Pintar()
+    {
+        comparar = txtArea.getText();
+        
+        hola.getLexema().equals("pensum");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarReservadas(bindice,comparar);
+                
+        hola.getLexema().equals("curso");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarReservadas(bindice,comparar);
+        
+        hola.getLexema().equals("codigo");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarReservadas(bindice,comparar);
+        
+        hola.getLexema().equals("nombre");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarReservadas(bindice,comparar);
+        
+        hola.getLexema().equals("creditos");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarReservadas(bindice,comparar);
+        
+        hola.getLexema().equals("prerrequisitos");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarReservadas(bindice,comparar);
+        
+        
+        hola.getLexema().equals("0");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getLexema().equals("1");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getLexema().equals("2");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getLexema().equals("3");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getLexema().equals("4");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getLexema().equals("5");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+                
+        hola.getLexema().equals("6");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getLexema().equals("7");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getLexema().equals("8");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getLexema().equals("9");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarNumeros(bindice,comparar);
+        
+        hola.getTkn().equals("cadena");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarCadena(bindice,comparar);
+        
+        hola.getLexema().equals("{");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarLlaves(bindice,comparar);
+        
+        hola.getLexema().equals("}");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarLlaves(bindice,comparar);
+        
+        hola.getLexema().equals(",");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarComa(bindice,comparar);
+        
+        hola.getLexema().equals(";");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintarPComa(bindice,comparar);
+        
+        hola.getLexema().equals(":");
+        bindice = txtArea.getText().indexOf(hola.getLexema());
+        pintar2puntos(bindice,comparar);
+    }
+    
+    public void pintarReservadas(int pindice, String pcomparar)
+    {
+        bindice = pindice + hola.lexema.length() - 1;
+        
+        try        
+        {
+            txtArea.select(pindice, hola.lexema.length());            
+            txtArea.setSelectionColor(Color.blue);
+            txtArea.setSelectionStart(txtArea.getText().length());
+            
+            pcomparar = txtArea.getText().substring(pindice + hola.getLexema().length());
+            pindice = pcomparar.indexOf(hola.getLexema()) + pindice + hola.getLexema().length();
+            
+            if(pindice != bindice)
+            {
+                pintarReservadas(pindice,pcomparar);
+            }
+            else
+            {
+                bindice = 0;
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }        
+    }
+    
+    public void pintarNumeros(int pindice, String pcomparar)
+    {                 
+        try        
+        {
+            bindice = pindice + hola.lexema.length() - 1;
+            
+            txtArea.select(pindice, hola.lexema.length());            
+            txtArea.setSelectionColor(Color.red);
+            txtArea.setSelectionStart(txtArea.getText().length());
+            
+            pcomparar = txtArea.getText().substring(pindice + hola.getLexema().length());
+            pindice = pcomparar.indexOf(hola.getLexema()) + pindice + hola.getLexema().length();
+            
+            if(pindice != bindice)
+            {
+                pintarNumeros(pindice,pcomparar);
+            }
+            else
+            {
+                bindice = 0;
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }     
+    }
+    
+    public void pintarCadena(int pindice, String pcomparar)
+    {
+        try        
+        {
+            bindice = pindice + hola.lexema.length() - 1;
+            txtArea.select(pindice, hola.lexema.length());            
+            txtArea.setSelectionColor(Color.green);
+            txtArea.setSelectionStart(txtArea.getText().length());
+            
+            pcomparar = txtArea.getText().substring(pindice + hola.getLexema().length());
+            pindice = pcomparar.indexOf(hola.getLexema()) + pindice + hola.getLexema().length();
+            
+            if(pindice != bindice)
+            {
+                pintarCadena(pindice,pcomparar);
+            }
+            else
+            {
+                bindice = 0;
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }  
+    }
+    
+    public void pintarLlaves(int pindice, String pcomparar)
+    {
+        try        
+        {
+            bindice = pindice + hola.lexema.length() - 1;
+            txtArea.select(pindice, hola.lexema.length());            
+            txtArea.setSelectionColor(Color.PINK);
+            txtArea.setSelectionStart(txtArea.getText().length());
+            
+            pcomparar = txtArea.getText().substring(pindice + hola.getLexema().length());
+            pindice = pcomparar.indexOf(hola.getLexema()) + pindice + hola.getLexema().length();
+            
+            if(pindice != bindice)
+            {
+                pintarLlaves(pindice,pcomparar);
+            }
+            else
+            {
+                bindice = 0;
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }  
+    }
+    
+    public void pintarComa(int pindice, String pcomparar)
+    {
+        try        
+        {
+            bindice = pindice + hola.lexema.length() - 1;
+            
+            txtArea.select(pindice, hola.lexema.length());            
+            txtArea.setSelectionColor(Color.yellow);
+            txtArea.setSelectionStart(txtArea.getText().length());
+            
+            pcomparar = txtArea.getText().substring(pindice + hola.getLexema().length());
+            pindice = pcomparar.indexOf(hola.getLexema()) + pindice + hola.getLexema().length();
+            
+            if(pindice != bindice)
+            {
+                pintarComa(pindice,pcomparar);
+            }
+            else
+            {
+                bindice = 0;
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }  
+    }
+    
+    public void pintarPComa(int pindice, String pcomparar)
+    {
+        try        
+        {
+            bindice = pindice + hola.lexema.length() - 1;
+            
+            txtArea.select(pindice, hola.lexema.length());            
+            txtArea.setSelectionColor(Color.yellow);
+            txtArea.setSelectionStart(txtArea.getText().length());
+            
+            pcomparar = txtArea.getText().substring(pindice + hola.getLexema().length());
+            pindice = pcomparar.indexOf(hola.getLexema()) + pindice + hola.getLexema().length();
+            
+            if(pindice != bindice)
+            {
+                pintarComa(pindice,pcomparar);
+            }
+            else
+            {
+                bindice = 0;
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }  
+    }
+    
+    public void pintar2puntos(int pindice, String pcomparar)
+    {
+        try        
+        {
+            bindice = pindice + hola.lexema.length() - 1;
+            
+            txtArea.select(pindice, hola.lexema.length());            
+            txtArea.setSelectionColor(Color.yellow);
+            txtArea.setSelectionStart(txtArea.getText().length());
+            
+            pcomparar = txtArea.getText().substring(pindice + hola.getLexema().length());
+            pindice = pcomparar.indexOf(hola.getLexema()) + pindice + hola.getLexema().length();
+            
+            if(pindice != bindice)
+            {
+                pintarComa(pindice,pcomparar);
+            }
+            else
+            {
+                bindice = 0;
+            }
+        }
+        catch(Exception e)
+        {
+            
+        }  
+    }
     /**
      * @param args the command line arguments
      */
@@ -430,7 +721,7 @@ JFileChooser seleccionar = new JFileChooser();
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtArea;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextPane txtArea;
     // End of variables declaration//GEN-END:variables
 }
