@@ -27,6 +27,7 @@ ListaTkn Lista = new ListaTkn();
      int fila = 0;
      int columna = 0;
      String token = "";
+     String num,f,col,id;
      
 public void Scanner(String entrada)
 {
@@ -100,7 +101,8 @@ public void Scanner(String entrada)
 //                System.out.println("Estado 1");
 //                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);                
 //                tabla.add(aux);
-                Lista.agregarFinal(""+nutknen, concatenar,""+fila,""+columna,""+idtkn, token);
+                num =""+nutknen; f = ""+fila; col =""+columna; id = ""+idtkn;
+                Lista.agregarFinal(num, concatenar,f,col,id, token);
                 nutknen++; concatenar = "";
                }
                break;
@@ -129,7 +131,8 @@ public void Scanner(String entrada)
 ////                System.out.println("Estado 2");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);                
 //                tabla.add(aux);        
-                Lista.agregarFinal(""+nutknen, concatenar,""+fila,""+columna,""+idtkn, token);
+                num =""+nutknen; f = ""+fila; col =""+columna; id = ""+idtkn;
+                Lista.agregarFinal(num, concatenar,f,col,id, token);
                 nutknen++; concatenar = "";   
                }
                break;
@@ -147,7 +150,8 @@ public void Scanner(String entrada)
 ////                System.out.println("Estado 3");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);                
 //                tabla.add(aux);        
-                Lista.agregarFinal(""+nutknen, concatenar,""+fila,""+columna,""+idtkn, token);
+                num =""+nutknen; f = ""+fila; col =""+columna; id = ""+idtkn;
+                Lista.agregarFinal(num, concatenar,f,col,id, token);
                 nutknen++; concatenar = "";
                break;
            case 4:
@@ -187,8 +191,9 @@ public void Scanner(String entrada)
 //                aux.setLexema(concatenar);
 ////                System.out.println("Estado 6");
 ////                System.out.println("numero: " + aux.numero+" fila: " + aux.fila+" columna: " + aux.columna+" idtkn: " + aux.idtkn+" token: " + aux.tkn+" Lexema: " + concatenar);
-//                tabla.add(aux);         
-                Lista.agregarFinal(""+nutknen, concatenar,""+fila,""+columna,""+idtkn, token);
+//                tabla.add(aux);                      
+                num =""+nutknen; f = ""+fila; col =""+columna; id = ""+idtkn;
+                Lista.agregarFinal(num, concatenar,f,col,id, token);
                 nutknen++; concatenar = "";
                break;
         }         

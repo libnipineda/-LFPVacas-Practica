@@ -39,7 +39,7 @@ public class ListaTkn {
             inicio=nuevo;
         }else{
             NodoTkn aux = inicio;
-            while (inicio.getSiguiente()!=null) {
+            while (inicio.getSiguiente() !=null) {
                 aux = aux.getSiguiente();
             }
             aux.setSiguiente(nuevo);
@@ -50,7 +50,7 @@ public class ListaTkn {
         if (!esVacia()) {
             NodoTkn aux = inicio;
             int i=0;
-            while(aux!=null){
+            while(aux !=null){
                 System.out.println(i+"- Lexema: "+aux.getLexema());
                 aux=aux.getSiguiente();
                 i++;

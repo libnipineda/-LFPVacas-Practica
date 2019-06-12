@@ -272,14 +272,14 @@ JFileChooser seleccionar = new JFileChooser();
         // TODO add your handling code here:        
     //    Automata reporte = new Automata();    
         Token reporte = new Token();
-        
+        reporte.ReporteTkn();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
   //      Automata reporte = new Automata();
         Token reporte = new Token();
-        
+        reporte.ReporteE();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     public String Abrir(File archivo)
