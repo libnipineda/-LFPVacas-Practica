@@ -248,8 +248,7 @@ JFileChooser seleccionar = new JFileChooser();
         //datos.Lexico(txtArea.getText());
         Token datos = new Token();
         datos.Scanner(txtArea.getText());
-        //datos.Graficotxt();
-        datos.VerLista();
+        //datos.Graficotxt();        
     }//GEN-LAST:event_SCANNERActionPerformed
 
     private void SALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SALIRActionPerformed
@@ -273,14 +272,14 @@ JFileChooser seleccionar = new JFileChooser();
         // TODO add your handling code here:        
     //    Automata reporte = new Automata();    
         Token reporte = new Token();
-        reporte.Imprimir();    
+        
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
   //      Automata reporte = new Automata();
         Token reporte = new Token();
-        reporte.Imprimir1();
+        
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     public String Abrir(File archivo)

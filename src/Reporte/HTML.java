@@ -7,6 +7,7 @@ package Reporte;
 
 import ListasPractica.ListaTkn;
 import ListasPractica.ListaError;
+import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -41,7 +42,7 @@ public class HTML {
                     + "<td><strong>" + arreglo.get(i).idtkn + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).tkn + "</strong></td>"
                     + "<td><strong>" + arreglo.get(i).fila + "</strong></td>"
-                    + "<td><strong>" + arreglo.get(i).columna + "</strong></td>"
+                    + "<td><strong>" + arreglo.get(i).columna + "</strong></td>"                    
                     + "</tr>";
             }            
         }        
@@ -73,11 +74,11 @@ public class HTML {
                    archivo.createNewFile();
                }
                FileWriter fw = new FileWriter(archivo);
+               Desktop.getDesktop().open(archivo);
                BufferedWriter bw = new BufferedWriter(fw);
                for(String item : texto)
                {
-                bw.write(item.toString());
-                   System.out.println("HTML QUE VIENE: "+ item.toString());
+                bw.write(item.toString());                   
                }               
                bw.close();
                JOptionPane.showMessageDialog(null,"Archivo creado");
